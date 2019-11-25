@@ -25,13 +25,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.get('/', (req, res) =>{
-    db.select('*').from('users')
-    .then(datas =>{
-        res.json(datas);
-    })
-    
-});
+app.get('/', (req, res) =>{ res.send('it is working') });
 
 app.post('/signin', signin.handleSignin(db, bcrypt));
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) });
@@ -53,21 +47,3 @@ app.listen(process.env.PORT || 3000, () =>{
 
 */
 
-// const app = require('http')
-//     .createServer((req, res) => res.send('oh hi there'));
-
-
-// const PORT = process.env.PORT
-// app.listen(PORT, () => {
-//     console.log(`Server is listening on port ${PORT}`);
-// });
-
-// console.log(PORT)
-
-// const DATABASE_URL = process.env.DATABASE_URL
-
-// app.listen(3000, () => {
-//     console.log(`Server is listening on port ${DATABASE_URL}`);
-// });
-
-// console.log(3000)
